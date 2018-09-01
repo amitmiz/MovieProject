@@ -17,6 +17,8 @@
     </environment>
 </head>
 <body>
+
+
     <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
@@ -34,7 +36,12 @@
                     <li><a asp-area="" asp-controller="StoreBranches" asp-action="MapView">Branches</a></li>
                     <li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
                     <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <li><a asp-area="" asp-controller="Admin" asp-action="Index">Admin</a></li>
+                    }
                 </ul>
+                @await Html.PartialAsync("_LoginPartial")
             </div>
         </div>
     </nav>

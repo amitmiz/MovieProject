@@ -2,10 +2,10 @@ c:\users\amita\source\repos\MovieProject\MovieProject\bin\Debug\netcoreapp2.0\Mo
 c:\users\amita\source\repos\MovieProject\MovieProject\bin\Debug\netcoreapp2.0\MovieProject.runtimeconfig.json
 c:\users\amita\source\repos\MovieProject\MovieProject\bin\Debug\netcoreapp2.0\MovieProject.runtimeconfig.dev.json
 c:\users\amita\source\repos\MovieProject\MovieProject\bin\Debug\netcoreapp2.0\MovieProject.dll
-c:\users\amita\source\repos\MovieProject\MovieProject\obj\Debug\netcoreapp2.0\MovieProject.csprojAssemblyReference.cache
 c:\users\amita\source\repos\MovieProject\MovieProject\obj\Debug\netcoreapp2.0\MovieProject.csproj.CoreCompileInputs.cache
 c:\users\amita\source\repos\MovieProject\MovieProject\obj\Debug\netcoreapp2.0\MovieProject.AssemblyInfoInputs.cache
 c:\users\amita\source\repos\MovieProject\MovieProject\obj\Debug\netcoreapp2.0\MovieProject.AssemblyInfo.cs
 c:\users\amita\source\repos\MovieProject\MovieProject\bin\Debug\netcoreapp2.0\MovieProject.pdb
 c:\users\amita\source\repos\MovieProject\MovieProject\obj\Debug\netcoreapp2.0\MovieProject.dll
 c:\users\amita\source\repos\MovieProject\MovieProject\obj\Debug\netcoreapp2.0\MovieProject.pdb
+C:\Users\amita\source\repos\MovieProject\MovieProject\obj\Debug\netcoreapp2.0\MovieProject.csprojAssemblyReference.cache
