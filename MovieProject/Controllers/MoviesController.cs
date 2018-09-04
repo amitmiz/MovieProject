@@ -30,7 +30,7 @@ namespace MovieProject.Controllers
 
         public List<Movie> GetMoviesByDirector(string p_director)
         {
-            var movies = this._context.Movie.Where(x => x.Director.Name == p_director).ToList();
+            var movies = this._context.Movie.Where(x => x.Director == p_director).ToList();
             return movies;
         }
         public List<Movie> GetMoviesByReleaseYear(int p_releaseYear)
@@ -43,13 +43,12 @@ namespace MovieProject.Controllers
         {
             return View(await _context.Movie.ToListAsync());
         }
-        public IActionResult Search()
+        public IActionResult Search(string title = null, int? year = null, string genere = null, string director = null,int? priceFrom=null,int? priceTo=null)
         {
-            return View(this.GetMoviesBySearchParams(null, null, "Geeks", null));
+            return View(this.GetMoviesBySearchParams(title, year, genere, director,priceFrom,priceTo));
         }
-        public List<Movie> GetMoviesBySearchParams(string p_movieTitle = null, int? p_releaseYear = null, string p_genre = null, string p_director = null)
+        public List<Movie> GetMoviesBySearchParams(string p_movieTitle = null, int? p_releaseYear = null, string p_genere = null, string p_director = null ,int? p_priceFrom=null, int? p_priceTo = null)
         {
-
             var queryOver = this._context.Movie.AsQueryable();
 
             if (!string.IsNullOrEmpty(p_movieTitle))
@@ -60,22 +59,28 @@ namespace MovieProject.Controllers
             {
                 queryOver = queryOver.Where(x => x.ReleaseDate.Year == p_releaseYear.Value);
             }
-            if (!string.IsNullOrEmpty(p_genre))
+            if (!string.IsNullOrEmpty(p_genere))
             {
-                queryOver = queryOver.Where(x => x.Genre == p_genre);
+                queryOver = queryOver.Where(x => x.Genre == p_genere);
             }
             if (!string.IsNullOrEmpty(p_director))
             {
-                queryOver = queryOver.Where(x => x.Director.Name == p_director);
+                queryOver = queryOver.Where(x => x.Director == p_director);
             }
-
-            var result = queryOver.Select(x => new Movie { Title = x.Title, ReleaseDate = x.ReleaseDate, Genre = x.Genre, Price = x.Price }).ToList();
+            if (p_priceFrom.HasValue)
+            {
+                queryOver = queryOver.Where(x => x.Price >= p_priceFrom);
+            }
+            if (p_priceTo.HasValue)
+            {
+                queryOver = queryOver.Where(x => x.Price >= p_priceTo);
+            }
+            var result = queryOver.Select(x => new Movie { Title = x.Title, ReleaseDate = x.ReleaseDate, Genre = x.Genre, Price = x.Price,Director =x.Director }).ToList();
 
             // return this._jsonSerializer.Serialize(result); // Run the query and avoid context dispose
             return result;
 
         }
-
 
         // GET: Movies/Details/5
         public async Task<IActionResult> Details(int? id)
@@ -106,7 +111,7 @@ namespace MovieProject.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ID,Title,ReleaseDate,Genre,Price")] Movie movie)
+        public async Task<IActionResult> Create([Bind("ID,Title,ReleaseDate,Genre,Price,Director")] Movie movie)
         {
             if (ModelState.IsValid)
             {
@@ -138,7 +143,7 @@ namespace MovieProject.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ID,Title,ReleaseDate,Genre,Price")] Movie movie)
+        public async Task<IActionResult> Edit(int id, [Bind("ID,Title,ReleaseDate,Genre,Price,Director")] Movie movie)
         {
             if (id != movie.ID)
             {

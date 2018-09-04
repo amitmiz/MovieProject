@@ -11,7 +11,7 @@
 }
 
 
-<form action="/movies/GetMoviesBySearchParams >
+<form action="" >
     <fieldset layout="column">
 
         <legend>Filters:</legend>
@@ -21,47 +21,51 @@
                     Name:
                 </td>
                 <td>
-                    <input type="text" name="title" class="form-control text-box single-line valid" id="filterMovieTitleText" onkeyup="submitFilter(event)" />
+                    <input type="text" id="titleFilter" name="title" class="form-control text-box single-line valid"  onkeyup="submitFilter(event)" />
                 </td>
             </tr>
             <tr>
                 <td>
-                    Releas year
+                    Release year:
                 </td>
                 <td>
-                    <input type="text" name="year" id="filterRelaseYear" class="form-control text-box single-line valid" onkeyup="submitFilter(event)" />
+                    <input type="number"  id="releaseYearFilter" name="year" class="form-control text-box single-line valid" onkeyup="submitFilter(event)" />
                 </td>
             </tr>
             <tr>
                 <td>
-                    Genere
+                    Genere:
                 </td>
                 <td>
-
-
-                    <input id="filterGenere" name="genere" class="form-control text-box single-line valid" type="number" onkeyup="submitFilter(event)" />
+                    <input type="text" id="genereFilter" name="genere" class="form-control text-box single-line valid"  onkeyup="submitFilter(event)" />
                 </td>
             </tr>
             <tr>
                 <td>
-                    Director
+                    Director:
                 </td>
                 <td>
-                    <input id="filterDirector" name="director" class="form-control text-box single-line valid" type="number" onkeyup="submitFilter(event)" />
+                    <input type="text" id="directorFilter" name="director" class="form-control text-box single-line valid"  onkeyup="submitFilter(event)" />
                 </td>
             </tr>
-            @*<tr>
+            <tr>
                 <td>
-                    Price(+/-2):
+                    Price From:
                 </td>
                 <td>
-                    <input id="filterPriceText" name="price" class="form-control text-box single-line valid" type="number" onkeyup="submitFilter(event)" />
+                    <input id="priceFilter" name="priceFrom" class="form-control text-box single-line valid" type="number" onkeyup="submitFilter(event)" />
                 </td>
-            </tr>*@
+                <td>
+                    Price To:
+                </td>
+                <td>
+                    <input id="priceFilter" name="priceTo" class="form-control text-box single-line valid" type="number" onkeyup="submitFilter(event)" />
+                </td>
+            </tr>
         </table>
     </fieldset>
 
-    <button type="submit">search</button>
+    <button type="submit"class="btn btn-default">search</button>
 </form>
 
 
@@ -80,31 +84,31 @@
             <th>
                 @Html.DisplayNameFor(model => model.Price)
             </th>
-            <th></th>
+            <th>
+                @Html.DisplayNameFor(model => model.Director)
+            </th>            
         </tr>
     </thead>
     <tbody>
         @foreach (var item in Model)
         {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Title)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ReleaseDate)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Genre)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Price)
-                </td>
-                <td>
-                    <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
-                    <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
-                    <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
-                </td>
-            </tr>
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ReleaseDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Genre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Director)
+            </td>
+        </tr>
         }
     </tbody>
 </table>
