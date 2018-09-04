@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using IMDBCore;
 //ing System.Web.Script.Serialization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.Extensions.Configuration;
 using Microsoft.EntityFrameworkCore;
 using MovieProject.Models;
 
@@ -14,12 +15,15 @@ namespace MovieProject.Controllers
     public class MoviesController : Controller
     {
         private readonly MovieProjectContext _context;
+        private readonly IConfiguration _configuration;
+
         //ivate readonly JavaScriptSerializer _jsonSerializer;
 
-        public MoviesController(MovieProjectContext context)
+        public MoviesController(MovieProjectContext context, IConfiguration Configuration)
         {
             //this._jsonSerializer = new JavaScriptSerializer();
             _context = context;
+            _configuration = Configuration;
         }
 
         public List<Movie> GetMoviesByGenre(string p_genre)
@@ -202,10 +206,23 @@ namespace MovieProject.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        public async Task<IActionResult> GetMovieData(string movieName)
+        {
+            string  API_KEY =  _configuration.GetSection("AppSettings")["ImdbApiKey"];
+
+            var imdb = new Imdb(API_KEY);
+            var movie = await imdb.GetMovieAsync(movieName);
+
+           return Json(movie);
+
+            
+        }
+
         private bool MovieExists(int id)
         {
             return _context.Movie.Any(e => e.ID == id);
         }
+
     }
 }
 

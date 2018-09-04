@@ -65,3 +65,31 @@
     </a>
 </div>
 
+<aside id="twitterBox">
+    <div>
+    
+        <h3 style="float: left; margin-left: 20px;">News from USA TODAY Books</h3>
+    </div>
+    <br stle="clear: both" />
+    <div id="twitterRows"></div>
+</aside>
+
+
+
+@section scripts {
+    <script type="text/javascript">
+        $(function () {
+   
+
+            $.getJSON("../Home/GetTweets", function (res) {
+                const x = res.map(tweet => "<tr><td>" + tweet + "</td><tr>").reduce((acc, next) => acc + next);
+                const table = "<table class='table '>" + x + "</table>"
+                $("#twitterRows").html(table);
+          
+            });
+
+ 
+         
+        });
+    </script>
+    }
