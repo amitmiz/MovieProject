@@ -218,21 +218,6 @@ namespace MovieProject.Migrations
                     b.ToTable("Movie");
                 });
 
-            modelBuilder.Entity("MovieProject.Models.MovieDirecotr", b =>
-                {
-                    b.Property<long>("ID")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("Age");
-
-                    b.Property<string>("Name");
-
-                    b.HasKey("ID");
-
-                    b.ToTable("MovieDirecotr");
-                });
-
             modelBuilder.Entity("MovieProject.Models.StoreBranch", b =>
                 {
                     b.Property<int>("ID")

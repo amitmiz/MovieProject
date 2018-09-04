@@ -11,8 +11,8 @@ namespace MovieProject.Migrations
                 name: "FK_Movie_MovieDirecotr_DirectorID",
                 table: "Movie");
 
-            migrationBuilder.DropTable(
-                name: "MovieDirecotr");
+            //migrationBuilder.DropTable(
+            //    name: "MovieDirecotr");
 
             migrationBuilder.DropIndex(
                 name: "IX_Movie_DirectorID",
