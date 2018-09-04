@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace MovieProject.Migrations
 {
-    public partial class customer : Migration
+    public partial class init : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -63,17 +63,20 @@ namespace MovieProject.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "MovieDirecotr",
+                name: "Movie",
                 columns: table => new
                 {
-                    ID = table.Column<long>(nullable: false)
+                    ID = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Name = table.Column<string>(nullable: true),
-                    Age = table.Column<int>(nullable: false)
+                    Title = table.Column<string>(nullable: true),
+                    ReleaseDate = table.Column<DateTime>(nullable: false),
+                    Genre = table.Column<string>(nullable: true),
+                    Price = table.Column<decimal>(nullable: false),
+                    Director = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_MovieDirecotr", x => x.ID);
+                    table.PrimaryKey("PK_Movie", x => x.ID);
                 });
 
             migrationBuilder.CreateTable(
@@ -198,29 +201,6 @@ namespace MovieProject.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
-            migrationBuilder.CreateTable(
-                name: "Movie",
-                columns: table => new
-                {
-                    ID = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Title = table.Column<string>(nullable: true),
-                    ReleaseDate = table.Column<DateTime>(nullable: false),
-                    Genre = table.Column<string>(nullable: true),
-                    Price = table.Column<decimal>(nullable: false),
-                    DirectorID = table.Column<long>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Movie", x => x.ID);
-                    table.ForeignKey(
-                        name: "FK_Movie_MovieDirecotr_DirectorID",
-                        column: x => x.DirectorID,
-                        principalTable: "MovieDirecotr",
-                        principalColumn: "ID",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
                 table: "AspNetRoleClaims",
@@ -259,11 +239,6 @@ namespace MovieProject.Migrations
                 column: "NormalizedUserName",
                 unique: true,
                 filter: "[NormalizedUserName] IS NOT NULL");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Movie_DirectorID",
-                table: "Movie",
-                column: "DirectorID");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -297,9 +272,6 @@ namespace MovieProject.Migrations
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");
-
-            migrationBuilder.DropTable(
-                name: "MovieDirecotr");
         }
     }
 }

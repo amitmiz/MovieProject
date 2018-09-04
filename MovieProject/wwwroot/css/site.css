@@ -38,3 +38,9 @@ body {
         display: none;
     }
 }
+
+
+#app-logo {
+    width:20px;
+    float:left
+}

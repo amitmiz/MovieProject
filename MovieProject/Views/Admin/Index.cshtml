@@ -1,4 +1,8 @@
 ﻿
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+
 @{
     ViewData["Title"] = "Admin Dashbaord";
 }
@@ -6,13 +10,14 @@
 <h2>Admin Dashbaord</h2>
 
 <div class="jumbotron">
-    @*<h1>Hello, @UserManager.GetUserName(User)</h1>*@
-    <p>...</p>
-    <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a></p>
+    <h1>Hello, @UserManager.GetUserName(User)</h1>
+    <p>Welcome to Admin Dashbaord</p>
+
+
 </div>
 
 <div class="row">
-    <div class="col-md-4">Create New Movie</div>
-    <div class="col-md-4">Create New Customer</div>
-    <div class="col-md-4">Create New Customer</div>
+
+    <div class="col-md-4"><a asp-area="" asp-controller="Movies" asp-action="Create" class="btn btn-primary btn-lg">Create New Movie</a></div>
+    <div class="col-md-4"><a asp-area="" asp-controller="Customers" asp-action="Create" class="btn btn-primary btn-lg">Create New Customer</a></div>
 </div>

@@ -10,8 +10,8 @@ using MovieProject.Models;
 namespace MovieProject.Migrations
 {
     [DbContext(typeof(MovieProjectContext))]
-    [Migration("20180904182624_movie_update2")]
-    partial class movie_update2
+    [Migration("20180904185406_init")]
+    partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
