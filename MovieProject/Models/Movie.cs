@@ -9,6 +9,6 @@ namespace MovieProject.Models
         public DateTime ReleaseDate { get; set; }
         public string Genre { get; set; }
         public decimal Price { get; set; }
-        public MovieDirecotr Director { get; set; }
+        public string Director { get; set; }
     }
 }
