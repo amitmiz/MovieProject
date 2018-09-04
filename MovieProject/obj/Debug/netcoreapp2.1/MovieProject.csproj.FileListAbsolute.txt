@@ -5,7 +5,6 @@ C:\Users\amita\source\repos\MovieProject\MovieProject\bin\Debug\netcoreapp2.1\Mo
 C:\Users\amita\source\repos\MovieProject\MovieProject\bin\Debug\netcoreapp2.1\MovieProject.pdb
 C:\Users\amita\source\repos\MovieProject\MovieProject\bin\Debug\netcoreapp2.1\MovieProject.Views.dll
 C:\Users\amita\source\repos\MovieProject\MovieProject\bin\Debug\netcoreapp2.1\MovieProject.Views.pdb
-C:\Users\amita\source\repos\MovieProject\MovieProject\obj\Debug\netcoreapp2.1\MovieProject.csprojAssemblyReference.cache
 C:\Users\amita\source\repos\MovieProject\MovieProject\obj\Debug\netcoreapp2.1\MovieProject.csproj.CoreCompileInputs.cache
 C:\Users\amita\source\repos\MovieProject\MovieProject\obj\Debug\netcoreapp2.1\MovieProject.RazorAssemblyInfo.cache
 C:\Users\amita\source\repos\MovieProject\MovieProject\obj\Debug\netcoreapp2.1\MovieProject.RazorAssemblyInfo.cs
@@ -74,4 +73,4 @@ C:\Users\amita\source\repos\MovieProject\MovieProject\obj\Debug\netcoreapp2.1\Ra
 C:\Users\amita\source\repos\MovieProject\MovieProject\obj\Debug\netcoreapp2.1\Razor\Views\Customers\Details.g.cshtml.cs
 C:\Users\amita\source\repos\MovieProject\MovieProject\obj\Debug\netcoreapp2.1\Razor\Views\Customers\Edit.g.cshtml.cs
 C:\Users\amita\source\repos\MovieProject\MovieProject\obj\Debug\netcoreapp2.1\Razor\Views\Customers\Index.g.cshtml.cs
-C:\Users\amita\source\repos\MovieProject\MovieProject\obj\Debug\netcoreapp2.1\Razor\Views\Admin\Admin.g.cshtml.cs
+C:\Users\amita\source\repos\MovieProject\MovieProject\obj\Debug\netcoreapp2.1\Razor\Views\Admin\Index.g.cshtml.cs

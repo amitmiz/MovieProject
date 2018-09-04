@@ -90,7 +90,7 @@ using MovieProject.Models.ManageViewModels;
             WriteLiteral("    <p>\r\n        ");
             EndContext();
             BeginContext(163, 37, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f778bc40d5e24c1a81777d5c44698c7a", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "223e6245f2404d52bf476c84ed2941c8", async() => {
                 BeginContext(186, 10, true);
                 WriteLiteral("Create New");
                 EndContext();
@@ -198,7 +198,7 @@ using MovieProject.Models.ManageViewModels;
             WriteLiteral("                <td>\r\n                    ");
             EndContext();
             BeginContext(1063, 53, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "22605445f1db4436853583ac46b5f64a", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "5e49a8ad91744069a50fcfcf1055f36a", async() => {
                 BeginContext(1108, 4, true);
                 WriteLiteral("Edit");
                 EndContext();
@@ -233,7 +233,7 @@ using MovieProject.Models.ManageViewModels;
             WriteLiteral(" |\r\n                    ");
             EndContext();
             BeginContext(1140, 66, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "78dcb27d9c394c9eabc138ef8dbd1a1d", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "6589991c388a4b299917225d674e2509", async() => {
                 BeginContext(1193, 9, true);
                 WriteLiteral(" Details ");
                 EndContext();
@@ -268,7 +268,7 @@ using MovieProject.Models.ManageViewModels;
             WriteLiteral(" |\r\n                    ");
             EndContext();
             BeginContext(1230, 64, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "76623982d4154441b963c508f07157b2", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "fec938a7add84924a20b929a83f7631f", async() => {
                 BeginContext(1282, 8, true);
                 WriteLiteral(" Delete ");
                 EndContext();
