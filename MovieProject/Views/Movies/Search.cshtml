@@ -10,6 +10,12 @@
     ViewData["Title"] = "Search";
 }
 
+@if (User.IsInRole("Admin"))
+{
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+}
 
 <form action="/movies/GetMoviesBySearchParams >
     <fieldset layout="column">
@@ -61,7 +67,7 @@
         </table>
     </fieldset>
 
-    <button type="submit">search</button>
+    <button class="btn btn-success" type="submit">search</button>
 </form>
 
 
