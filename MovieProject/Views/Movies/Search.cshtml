@@ -1,0 +1,111 @@
+﻿
+@model IEnumerable<MovieProject.Models.Movie>
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@{
+    ViewData["Title"] = "Search";
+}
+
+
+<form action="/movies/GetMoviesBySearchParams >
+    <fieldset layout="column">
+
+        <legend>Filters:</legend>
+        <table>
+            <tr>
+                <td>
+                    Name:
+                </td>
+                <td>
+                    <input type="text" name="title" class="form-control text-box single-line valid" id="filterMovieTitleText" onkeyup="submitFilter(event)" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Releas year
+                </td>
+                <td>
+                    <input type="text" name="year" id="filterRelaseYear" class="form-control text-box single-line valid" onkeyup="submitFilter(event)" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Genere
+                </td>
+                <td>
+
+
+                    <input id="filterGenere" name="genere" class="form-control text-box single-line valid" type="number" onkeyup="submitFilter(event)" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Director
+                </td>
+                <td>
+                    <input id="filterDirector" name="director" class="form-control text-box single-line valid" type="number" onkeyup="submitFilter(event)" />
+                </td>
+            </tr>
+            @*<tr>
+                <td>
+                    Price(+/-2):
+                </td>
+                <td>
+                    <input id="filterPriceText" name="price" class="form-control text-box single-line valid" type="number" onkeyup="submitFilter(event)" />
+                </td>
+            </tr>*@
+        </table>
+    </fieldset>
+
+    <button type="submit">search</button>
+</form>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ReleaseDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Genre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ReleaseDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Genre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
