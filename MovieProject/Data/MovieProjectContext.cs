@@ -28,5 +28,7 @@ namespace MovieProject.Models
         }
 
         public DbSet<MovieProject.Models.Customer> Customer { get; set; }
+
+        public DbSet<MovieProject.Models.Supplier> Supplier { get; set; }
     }
 }
