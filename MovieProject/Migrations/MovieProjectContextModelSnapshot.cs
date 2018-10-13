@@ -190,7 +190,11 @@ namespace MovieProject.Migrations
 
                     b.Property<string>("City");
 
+                    b.Property<string>("CustomerId");
+
                     b.Property<string>("Name");
+
+                    b.Property<string>("PhoneNumber");
 
                     b.HasKey("ID");
 

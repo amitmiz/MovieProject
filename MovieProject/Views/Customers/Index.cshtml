@@ -16,6 +16,9 @@
     <thead>
         <tr>
             <th>
+                @Html.DisplayNameFor(model => model.CustomerId)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.Name)
             </th>
             <th>
@@ -23,6 +26,9 @@
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.City)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PhoneNumber)
             </th>
             <th></th>
         </tr>
@@ -32,6 +38,9 @@
         {
         <tr>
             <td>
+                @Html.DisplayFor(modelItem => item.CustomerId)
+            </td>
+            <td>
                 @Html.DisplayFor(modelItem => item.Name)
             </td>
             <td>
@@ -40,16 +49,21 @@
             <td>
                 @Html.DisplayFor(modelItem => item.City)
             </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PhoneNumber)
+            </td>
+
+
             @if (User.IsInRole("Admin"))
             {
                 <td>
                     <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
-                    <a asp-action = "Details" asp-route-id = "@item.ID" > Details </a> |
-                    <a asp-action = "Delete" asp-route-id = "@item.ID" > Delete </a>
-                    
+                    <a asp-action="Details" asp-route-id="@item.ID"> Details </a> |
+                    <a asp-action="Delete" asp-route-id="@item.ID"> Delete </a>
+
                 </td>
             }
-            </tr>
+        </tr>
         }
     </tbody>
 </table>
