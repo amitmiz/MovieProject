@@ -77,9 +77,9 @@ namespace MovieProject.Controllers
             }
             if (p_priceTo.HasValue)
             {
-                queryOver = queryOver.Where(x => x.Price >= p_priceTo);
+                queryOver = queryOver.Where(x => x.Price <= p_priceTo);
             }
-            var result = queryOver.Select(x => new Movie { Title = x.Title, ReleaseDate = x.ReleaseDate, Genre = x.Genre, Price = x.Price,Director =x.Director }).ToList();
+            var result = queryOver.Select(x => new Movie { ID=x.ID, Title = x.Title, ReleaseDate = x.ReleaseDate, Genre = x.Genre, Price = x.Price,Director =x.Director, Length=x.Length,MinimalAge=x.MinimalAge }).ToList();
 
             // return this._jsonSerializer.Serialize(result); // Run the query and avoid context dispose
             return result;
@@ -96,12 +96,13 @@ namespace MovieProject.Controllers
 
             var movie = await _context.Movie
                 .SingleOrDefaultAsync(m => m.ID == id);
+            ImdbMovie movieRev= this.GetMovieData(movie.Title);
             if (movie == null)
             {
                 return NotFound();
             }
 
-            return View(movie);
+            return View("details",movieRev);
         }
 
         // GET: Movies/Create
@@ -115,7 +116,7 @@ namespace MovieProject.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ID,Title,ReleaseDate,Genre,Price,Director")] Movie movie)
+        public async Task<IActionResult> Create([Bind("ID,Title,ReleaseDate,Genre,Price,Director,Length,MinimalAge")] Movie movie)
         {
             if (ModelState.IsValid)
             {
@@ -147,7 +148,7 @@ namespace MovieProject.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ID,Title,ReleaseDate,Genre,Price,Director")] Movie movie)
+        public async Task<IActionResult> Edit(int id, [Bind("ID,Title,ReleaseDate,Genre,Price,Director,Length,MinimalAge")] Movie movie)
         {
             if (id != movie.ID)
             {
@@ -206,14 +207,14 @@ namespace MovieProject.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        public async Task<IActionResult> GetMovieData(string movieName)
+        public ImdbMovie GetMovieData(string movieName)
         {
             string  API_KEY =  _configuration.GetSection("AppSettings")["ImdbApiKey"];
 
             var imdb = new Imdb(API_KEY);
-            var movie = await imdb.GetMovieAsync(movieName);
+            var movie =  imdb.GetMovieAsync(movieName);
 
-           return Json(movie);
+           return movie.Result;
 
             
         }

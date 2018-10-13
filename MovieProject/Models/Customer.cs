@@ -8,8 +8,11 @@ namespace MovieProject.Models
     public class Customer
     {
         public long ID { get; set; }
+        public string CustomerId { get; set; }
         public string Name { get; set; }
         public int Age { get; set; }
         public string City { get; set; }
+        public string PhoneNumber { get; set; }
+      
     }
 }
