@@ -43,7 +43,7 @@ namespace MovieProject.Controllers
             string API_secret = "YH04O7WOdJEp06O0joojqOoK4PxU2UUSICcTgoycjfOW6Qxbt7";
             string Access_token_secret = "K7JizwmE3R3uQUuuXYpuJypDGuetwpG6yg3NefudpnreG";
             string Access_token = "635262181-HqMqCszScmTNOiUHQwa8bH30tNybl2OogvFE5PeU";
-            string searhScreenName = "@USATODAYBooks";
+            string searhScreenName = "@TODAYMovies";
 
             var service = new TwitterService(API_key, API_secret);
             service.AuthenticateWith(Access_token, Access_token_secret);
