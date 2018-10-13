@@ -53,7 +53,7 @@ namespace MovieProject.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ID,Name,Age,City")] Customer customer)
+        public async Task<IActionResult> Create([Bind("CustomerId,ID,Name,Age,City,PhoneNumber")] Customer customer)
         {
             if (ModelState.IsValid)
             {
@@ -62,6 +62,41 @@ namespace MovieProject.Controllers
                 return RedirectToAction(nameof(Index));
             }
             return View(customer);
+        }
+        public IActionResult Search(string CustomerId, string Name = null, int? Age = null, string City = null, string PhoneNumber = null)
+        {
+            return View(this.GetCustomersBySearchParams(CustomerId, Name, Age, City, PhoneNumber));
+        }
+        public List<Customer> GetCustomersBySearchParams(string p_CustomerId,string p_Name = null, int? p_Age = null, string p_City = null, string p_PhoneNumber = null)
+        {
+
+            var queryOver = this._context.Customer.AsQueryable();
+
+            if (!string.IsNullOrEmpty(p_CustomerId))
+            {
+                queryOver = queryOver.Where(x => x.CustomerId == (p_CustomerId));
+            }
+            if (!string.IsNullOrEmpty(p_Name))
+            {
+                queryOver = queryOver.Where(x => x.Name == p_Name);
+            }
+            if (p_Age.HasValue)
+            {
+                queryOver = queryOver.Where(x => x.Age == p_Age.Value);
+            }
+            if (!string.IsNullOrEmpty(p_City))
+            {
+                queryOver = queryOver.Where(x => x.City == p_City);
+            }
+            if (!string.IsNullOrEmpty(p_PhoneNumber))
+            {
+                queryOver = queryOver.Where(x => x.PhoneNumber == p_PhoneNumber);
+            }
+            
+            var result = queryOver.Select(x => new Customer { ID = x.ID,  CustomerId= x.CustomerId, Name = x.Name, City = x.City, Age = x.Age, PhoneNumber = x.PhoneNumber }).ToList();         
+
+            return result;
+
         }
 
         // GET: Customers/Edit/5
@@ -85,7 +120,7 @@ namespace MovieProject.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(long id, [Bind("ID,Name,Age,City")] Customer customer)
+        public async Task<IActionResult> Edit(long id, [Bind("CustomerId,ID,Name,Age,City,PhoneNumber")] Customer customer)
         {
             if (id != customer.ID)
             {
