@@ -5,6 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="Views\Error\error.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="CsvHelper" Version="7.1.1" />
     <PackageReference Include="IMDBCore" Version="1.0.2" />
     <PackageReference Include="Microsoft.AspNetCore" Version="2.1.3" />
@@ -24,6 +28,10 @@
 
   <ItemGroup>
     <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Views\Error\error.cshtml" />
   </ItemGroup>
 
 </Project>
