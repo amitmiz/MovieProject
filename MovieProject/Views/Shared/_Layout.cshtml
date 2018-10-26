@@ -36,22 +36,19 @@
                 <a class="navbar-brand"><img id="app-logo" src="~/images/viewster-logo-300x300.png" />Movie App</a>
             </div>
             <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
-                    <li><a asp-area="" asp-controller="StoreBranches" asp-action="MapView">Branches</a></li>
-                    <li><a asp-area="" asp-controller="Movies" asp-action="Search">Movies</a></li>
+				<ul class="nav navbar-nav">
+					<li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
+					<li><a asp-area="" asp-controller="StoreBranches" asp-action="MapView">Branches</a></li>
+					<li><a asp-area="" asp-controller="Movies" asp-action="Search">Movies</a></li>
+					<li><a asp-area="" asp-controller="customers" asp-action="Search">Customer</a></li>
+					<li><a asp-area="" asp-controller="Recommender" asp-action="index">Movie Recommender</a></li>
+					<li><a asp-area="" asp-controller="Statistic" asp-action="index">Statistics</a></li>
 
-                    <li><a asp-area="" asp-controller="customers" asp-action="Search">Customer</a></li>
-
-
-                    <li><a asp-area="" asp-controller="Recommender" asp-action="index">Movie Recommender</a></li>
-
-
-                    @if (User.IsInRole("Admin"))
-                    {
-                        <li><a asp-area="" asp-controller="Admin" asp-action="Index">Admin</a></li>
-                    }
-                </ul>
+					@if (User.IsInRole("Admin"))
+					{
+						<li><a asp-area="" asp-controller="Admin" asp-action="Index">Admin</a></li>
+					}
+				</ul>
                 @await Html.PartialAsync("_LoginPartial")
             </div>
         </div>
