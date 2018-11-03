@@ -46,8 +46,17 @@ namespace MovieProject.Controllers
             return null;
         }
 
-        // GET: /<controller>/
-        public IActionResult Index()
+		public object GetMoviesByGenre()
+		{
+			var Movies = this._context.Movie.GroupBy(x => x.Genre)
+										  .OrderByDescending(x => x.Count()
+										  );
+			return Movies;
+
+		}
+
+		// GET: /<controller>/
+		public IActionResult Index()
         {
             return View(this.GetMostExpensiveMovies(2));
         }
