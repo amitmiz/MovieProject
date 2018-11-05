@@ -57,6 +57,9 @@ namespace MovieProject
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory, IServiceProvider serviceProvider)
 
         {
+
+            app.UseStatusCodePagesWithReExecute("/error/{0}");
+
             if (env.IsDevelopment())
             {
                 app.UseBrowserLink();

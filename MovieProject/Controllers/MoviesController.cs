@@ -112,11 +112,14 @@ namespace MovieProject.Controllers
 
             var movie = await _context.Movie
                 .SingleOrDefaultAsync(m => m.ID == id);
-            ImdbMovie movieRev= this.GetMovieData(movie.Title);
+
             if (movie == null)
             {
                 return NotFound();
             }
+
+            ImdbMovie movieRev= this.GetMovieData(movie.Title);
+    
 
             return View("details",movieRev);
         }

@@ -5,8 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - Movie Store</title>
 
-    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+    
+    <link rel="stylesheet" href="~/css/animate.css" />
     <environment include="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
         <link rel="stylesheet" href="~/css/site.css" />
@@ -17,11 +18,13 @@
               asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
         <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
     </environment>
+    @RenderSection("Styles", required: false)
+
 </head>
 <body>
 
 
-    <nav class="navbar navbar-default navbar-fixed-top">
+    <nav class="navbar navbar-default navbar-fixed-top navbar-inverse">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -40,7 +43,7 @@
 
                     <li><a asp-area="" asp-controller="customers" asp-action="Search">Customers</a></li>
 
-                    <li><a asp-area="" asp-controller="suppliers" asp-action="Search">Suppliers</a></li>
+                 
 
 
                     <li><a asp-area="" asp-controller="Recommender" asp-action="index">Movie Recommender</a></li>
@@ -48,6 +51,7 @@
 
                     @if (User.IsInRole("Admin"))
                     {
+                           <li><a asp-area="" asp-controller="suppliers" asp-action="Search">Suppliers</a></li>
                         <li><a asp-area="" asp-controller="Admin" asp-action="Index">Admin</a></li>
                     }
                 </ul>
