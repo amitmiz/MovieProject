@@ -24,61 +24,66 @@
 
         <legend>Filters:</legend>
         <table>
-            <tr>
-                <td>
-                    Supplier Name:
-                </td>
-                <td>
-                    @Html.DropDownList("SupplierId", String.Empty)
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    Name:
-                </td>
-                <td>
-                    <input type="text" id="titleFilter" name="title" class="form-control text-box single-line valid" onkeyup="submitFilter(event)" />
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    Release year:
-                </td>
-                <td>
-                    <input type="number" id="releaseYearFilter" name="year" class="form-control text-box single-line valid" onkeyup="submitFilter(event)" />
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    Genere:
-                </td>
-                <td>
-                    <input type="text" id="genereFilter" name="genere" class="form-control text-box single-line valid" onkeyup="submitFilter(event)" />
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    Director:
-                </td>
-                <td>
-                    <input type="text" id="directorFilter" name="director" class="form-control text-box single-line valid" onkeyup="submitFilter(event)" />
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    Price From:
-                </td>
-                <td>
-                    <input id="priceFilter" name="priceFrom" class="form-control text-box single-line valid" type="number" onkeyup="submitFilter(event)" />
-                </td>
-                <td>
-                    Price To:
-                </td>
-                <td>
-                    <input id="priceFilter" name="priceTo" class="form-control text-box single-line valid" type="number" onkeyup="submitFilter(event)" />
-                </td>
-            </tr>
-        </table>
+
+
+            @if (User.IsInRole("Admin"))
+            {
+                <tr>
+                    <td>
+                        Supplier Name:
+                    </td>
+                    <td>
+                        @Html.DropDownList("SupplierId", String.Empty)
+                    </td>
+                </tr>
+            }
+                <tr>
+                    <td>
+                        Name:
+                    </td>
+                    <td>
+                        <input type="text" id="titleFilter" name="title" class="form-control text-box single-line valid" onkeyup="submitFilter(event)" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Release year:
+                    </td>
+                    <td>
+                        <input type="number" id="releaseYearFilter" name="year" class="form-control text-box single-line valid" onkeyup="submitFilter(event)" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Genere:
+                    </td>
+                    <td>
+                        <input type="text" id="genereFilter" name="genere" class="form-control text-box single-line valid" onkeyup="submitFilter(event)" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Director:
+                    </td>
+                    <td>
+                        <input type="text" id="directorFilter" name="director" class="form-control text-box single-line valid" onkeyup="submitFilter(event)" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Price From:
+                    </td>
+                    <td>
+                        <input id="priceFilter" name="priceFrom" class="form-control text-box single-line valid" type="number" onkeyup="submitFilter(event)" />
+                    </td>
+                    <td>
+                        Price To:
+                    </td>
+                    <td>
+                        <input id="priceFilter" name="priceTo" class="form-control text-box single-line valid" type="number" onkeyup="submitFilter(event)" />
+                    </td>
+                </tr>
+            </table>
     </fieldset>
     <br />
     <button class="btn btn-success" type="submit">Search</button>
@@ -109,10 +114,14 @@
             <th>
                 @Html.DisplayNameFor(model => model.MinimalAge)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.SupplierId)
-            </th>
-        </tr>
+
+            @if (User.IsInRole("Admin"))
+            {
+                <th>
+                    @Html.DisplayNameFor(model => model.SupplierId)
+                </th>
+            }
+            </tr>
     </thead>
     <tbody>
         @foreach (var item in Model)
@@ -139,13 +148,17 @@
             <td>
                 @Html.DisplayFor(modelItem => item.MinimalAge)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.MovieSupplier.Name)
-            </td>
-            <td>
-                <a asp-action="Details" asp-route-id="@item.ID">Imdb Info</a>
-            </td>
-        </tr>
+
+            @if (User.IsInRole("Admin"))
+            {
+                <td>
+                    @Html.DisplayFor(modelItem => item.MovieSupplier.Name)
+                </td>
+            }
+                <td>
+                    <a asp-action="Details" asp-route-id="@item.ID">Imdb Info</a>
+                </td>
+            </tr>
         }
     </tbody>
 </table>
