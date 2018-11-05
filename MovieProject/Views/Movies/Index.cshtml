@@ -34,6 +34,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.MinimalAge)
             </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SupplierId)
+            </th>
 
             <th></th>
         </tr>
@@ -59,6 +62,9 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.MinimalAge)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MovieSupplier.Name)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |

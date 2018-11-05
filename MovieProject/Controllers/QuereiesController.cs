@@ -32,6 +32,21 @@ namespace MovieProject.Controllers
             var movies = this._context.Movie.OrderBy(x => x.Price).Take(p_topToTake).ToList();
             return movies;
         }
+        
+        public object GetMoviesGroupedBySuppliers()
+        {
+            var movies = this._context.Movie
+               .Join(this._context.Supplier,
+                     m => m.SupplierId,
+                     s => s.ID,
+                     (m, s) => new {
+                         Title = m.Title,
+                         Supplier = s.Name
+                     }
+                     ).GroupBy(x=>x.Supplier).ToArray();
+           
+            return movies;
+        }
 
         public object  GetMoviesGroupByReleaseYear()
         {
@@ -40,16 +55,12 @@ namespace MovieProject.Controllers
                                           .ToArray();
             return movies;
         }
-        public Movie GetMostSoldMovie()
-        {
-            //this._context.MovieToCustomer.groupBY(X=>X.MovieId).take()
-            return null;
-        }
+
 
         // GET: /<controller>/
         public IActionResult Index()
         {
-            return View(this.GetMostExpensiveMovies(2));
+            return View(this.GetMoviesGroupedBySuppliers());
         }
     }
 }

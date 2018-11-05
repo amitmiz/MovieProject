@@ -148,5 +148,35 @@ namespace MovieProject.Controllers
         {
             return _context.Supplier.Any(e => e.ID == id);
         }
+        public IActionResult Search(int? supplierId = null, string Name = null, string Address = null, string PhoneNumber = null)
+        {            
+            return View(this.GetSuppliersBySearchParams(supplierId,Name,PhoneNumber,Address));
+        }
+        public List<Supplier> GetSuppliersBySearchParams(int? p_supplierId = null, string p_supplierName = null, string p_phoneNumber = null, string p_address = null)
+        {
+            var queryOver = this._context.Supplier.AsQueryable();
+
+            if (!string.IsNullOrEmpty(p_supplierName))
+            {
+                queryOver = queryOver.Where(x => x.Name == (p_supplierName));
+            }
+            if (p_supplierId.HasValue)
+            {
+                queryOver = queryOver.Where(x => x.ID == p_supplierId.Value);
+            }
+            if (!string.IsNullOrEmpty(p_address))
+            {
+                queryOver = queryOver.Where(x => x.Address == p_address);
+            }
+            if (!string.IsNullOrEmpty(p_phoneNumber))
+            {
+                queryOver = queryOver.Where(x => x.PhoneNumber == p_phoneNumber);
+            }
+            var result = queryOver.Select(x => new Supplier { ID = x.ID, Name = x.Name, PhoneNumber = x.PhoneNumber, Address = x.Address}).ToList();
+
+            // return this._jsonSerializer.Serialize(result); // Run the query and avoid context dispose
+            return result;
+
+        }
     }
 }

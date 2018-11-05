@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MovieProject.Models
@@ -14,7 +15,10 @@ namespace MovieProject.Models
         public int Length { get; set; }
         public int MinimalAge { get; set; }
 
-        [ForeignKey("Supplier")]
+        [Display(Name = "Supplier")]
+        public int SupplierId { get; set; }
+
+        
         public virtual Supplier MovieSupplier { get; set; }
     }
 }

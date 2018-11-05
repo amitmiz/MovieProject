@@ -26,6 +26,14 @@
         <table>
             <tr>
                 <td>
+                    Supplier Name:
+                </td>
+                <td>
+                    @Html.DropDownList("SupplierId", String.Empty)
+                </td>
+            </tr>
+            <tr>
+                <td>
                     Name:
                 </td>
                 <td>
@@ -101,6 +109,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.MinimalAge)
             </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SupplierId)
+            </th>
         </tr>
     </thead>
     <tbody>
@@ -127,6 +138,9 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.MinimalAge)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MovieSupplier.Name)
             </td>
             <td>
                 <a asp-action="Details" asp-route-id="@item.ID">Imdb Info</a>

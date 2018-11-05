@@ -219,13 +219,13 @@ namespace MovieProject.Migrations
 
                     b.Property<DateTime>("ReleaseDate");
 
-                    b.Property<int?>("Supplier");
+                    b.Property<int>("SupplierId");
 
                     b.Property<string>("Title");
 
                     b.HasKey("ID");
 
-                    b.HasIndex("Supplier");
+                    b.HasIndex("SupplierId");
 
                     b.ToTable("Movie");
                 });
@@ -315,7 +315,8 @@ namespace MovieProject.Migrations
                 {
                     b.HasOne("MovieProject.Models.Supplier", "MovieSupplier")
                         .WithMany()
-                        .HasForeignKey("Supplier");
+                        .HasForeignKey("SupplierId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618
         }
