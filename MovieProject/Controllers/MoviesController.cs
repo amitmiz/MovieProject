@@ -125,6 +125,7 @@ namespace MovieProject.Controllers
         }
 
         // GET: Movies/Create
+        [Microsoft.AspNetCore.Authorization.Authorize(Policy = "RequireAdminRole")]
         public IActionResult Create()
         {
             PopulateSuppliersDropDownList();
@@ -136,6 +137,7 @@ namespace MovieProject.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Microsoft.AspNetCore.Authorization.Authorize(Policy = "RequireAdminRole")]
         public async Task<IActionResult> Create([Bind("ID,Title,ReleaseDate,Genre,Price,Director,Length,MinimalAge,SupplierId")] Movie movie)
         {
             if (ModelState.IsValid)
@@ -150,6 +152,7 @@ namespace MovieProject.Controllers
         }
 
         // GET: Movies/Edit/5
+        [Microsoft.AspNetCore.Authorization.Authorize(Policy = "RequireAdminRole")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -171,6 +174,7 @@ namespace MovieProject.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Microsoft.AspNetCore.Authorization.Authorize(Policy = "RequireAdminRole")]
         public async Task<IActionResult> Edit(int id, [Bind("ID,Title,ReleaseDate,Genre,Price,Director,Length,MinimalAge")] Movie movie)
         {
             if (id != movie.ID)
@@ -202,7 +206,9 @@ namespace MovieProject.Controllers
             return View(movie);
         }
 
+
         // GET: Movies/Delete/5
+        [Microsoft.AspNetCore.Authorization.Authorize(Policy = "RequireAdminRole")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -223,6 +229,7 @@ namespace MovieProject.Controllers
         // POST: Movies/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Microsoft.AspNetCore.Authorization.Authorize(Policy = "RequireAdminRole")]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var movie = await _context.Movie.SingleOrDefaultAsync(m => m.ID == id);

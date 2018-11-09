@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -9,6 +10,7 @@ using MovieProject.Models;
 
 namespace MovieProject.Controllers
 {
+    [Authorize(Policy = "RequireAdminRole")]
     public class SuppliersController : Controller
     {
         private readonly MovieProjectContext _context;
