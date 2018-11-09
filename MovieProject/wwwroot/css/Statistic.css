@@ -2,16 +2,18 @@
 }
 
 .Graghs {
-	margin-top: 5%;
+	margin-top:10%;
+}
+
+#ExpensiveMovies {
+    padding: 7px;
 }
 
 #ChippestMovies {
-	margin-top: -43.3%;
-	margin-left: 30%;
+    padding: 7px;
 }
 
 #Genre {
-	margin-top: -43.4%;
-	margin-left: 65%;
+    padding: 7px;
 }
 
