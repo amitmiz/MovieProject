@@ -34,6 +34,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.MinimalAge)
             </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SupplierId)
+            </th>
 
             <th></th>
         </tr>
@@ -41,28 +44,29 @@
     <tbody>
         @foreach (var item in Model)
         {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Title)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ReleaseDate)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Genre)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Price)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Length)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.MinimalAge)
-                </td>
-
-
-                <td>
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ReleaseDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Genre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Length)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MinimalAge)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MovieSupplier.Name)
+            </td>
+         <td>
                     <a asp-action="Details" asp-route-id="@item.ID">Imdb Info</a> |
 
                     @if (User.IsInRole("Admin"))
@@ -73,7 +77,7 @@
                         </div>
                     }
                 </td>
-            </tr>
+        </tr>
         }
     </tbody>
 </table>

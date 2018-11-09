@@ -23,7 +23,10 @@ namespace MovieProject.Models
         [Range(10,120)]
         public int MinimalAge { get; set; }
 
-        [ForeignKey("Supplier")]
+        [Display(Name = "Supplier")]
+        public int SupplierId { get; set; }
+
+        
         public virtual Supplier MovieSupplier { get; set; }
     }
 }

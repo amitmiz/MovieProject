@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -9,6 +10,7 @@ using MovieProject.Models;
 
 namespace MovieProject.Controllers
 {
+    [Authorize(Policy = "RequireAdminRole")]
     public class CustomersController : Controller
     {
         private readonly MovieProjectContext _context;
@@ -19,12 +21,14 @@ namespace MovieProject.Controllers
         }
 
         // GET: Customers
+        [AllowAnonymous]
         public async Task<IActionResult> Index()
         {
             return View(await _context.Customer.ToListAsync());
         }
 
         // GET: Customers/Details/5
+        [AllowAnonymous]
         public async Task<IActionResult> Details(long? id)
         {
             if (id == null)
@@ -63,10 +67,12 @@ namespace MovieProject.Controllers
             }
             return View(customer);
         }
+        [AllowAnonymous]
         public IActionResult Search(string CustomerId, string Name = null, int? Age = null, string City = null, string PhoneNumber = null)
         {
             return View(this.GetCustomersBySearchParams(CustomerId, Name, Age, City, PhoneNumber));
         }
+        [AllowAnonymous]
         public List<Customer> GetCustomersBySearchParams(string p_CustomerId,string p_Name = null, int? p_Age = null, string p_City = null, string p_PhoneNumber = null)
         {
 
