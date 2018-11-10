@@ -21,7 +21,6 @@ namespace MovieProject.Controllers
             //this._jsonSerializer = new JavaScriptSerializer();
         }
 
-        
         public List<Movie> GetMostExpensiveMovies(int p_topToTake)
         {
             var movies = this._context.Movie.OrderByDescending(x => x.Price).Take(p_topToTake).ToList();
@@ -56,6 +55,13 @@ namespace MovieProject.Controllers
             return movies;
         }
 
+        public object GetMoviesByGenre()
+        {
+            var Movies = this._context.Movie.GroupBy(x => x.Genre)
+                                          .OrderByDescending(x => x.Count()
+                                          );
+            return Movies;
+        }
 
         // GET: /<controller>/
         public IActionResult Index()
